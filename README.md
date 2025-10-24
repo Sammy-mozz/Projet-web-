@@ -7,4 +7,4 @@
 
 Nom2 et Nom3 ont travaillé ensemble sur le header/footer
 
-Lien du site (hébergé sur github) :
+Lien du site (hébergé sur github) : https://sammy-mozz.github.io/Projet-web-/
