@@ -1,16 +1,19 @@
 
 body {
-    background:linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    background-color: #000000;
 }
 
 
 .navbar {
-    background-color: black;
+    position: sticky;
+    background-color: #000000;
     padding: 40px;
     display: flex;
     justify-content: center; 
     align-items: center;
     position: relative;
+    border-radius: 15px;
+    box-shadow: 0 5px 1px #000452;
 }
 
 .logo-link {
@@ -34,13 +37,17 @@ body {
 
 .rubrique {
     position: relative;
-    color: greenyellow;
+    color: #00ffc6;
     border-radius: 10px;
     padding: 10px;
     text-decoration: none;
     overflow: hidden; 
     z-index: 0;
     transition: color 0.3s ease;
+    color: #fff;
+    text-align: center;
+    animation: rubrique 1s ease-in-out infinite alternate;
+
 }
 
 .rubrique::before {
@@ -50,7 +57,7 @@ body {
     left: 0;
     height: 100%;
     width: 0;
-    background-color: greenyellow;
+    background-color: #00ffc6;
     border-radius: 10px;
     transition: width 0.3s ease;
     z-index: -1; 
@@ -66,8 +73,7 @@ body {
 
 main > h1 {
     text-align: center;
-    background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
-    color:  burlywood;
+    color:  #000452;
 }
 
 .gallery-content {
@@ -85,7 +91,7 @@ main > h1 {
 }
 
 .gallery-item:hover {
-    box-shadow: 0 0 5px #000000;
+    box-shadow: 0 0 5px white;
     transform: translateY(-5px);
     opacity: 1;
       
@@ -100,6 +106,73 @@ main > h1 {
     height: 100px;
 }
 
-a {
-    text-decoration: none;
+
+
+
+
+.carousel {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+.slides img {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  object-fit: cover;
+  z-index: -1;
+}
+
+
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+@-webkit-keyframes rubrique {
+    from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e686, 0 0 40px #00e660, 0 0 50px #00e660, 0 0 60px #00e632, 0 0 70px #00e60c;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #4dd5ff, 0 0 40px #4dbeff, 0 0 50px #4d9aff, 0 0 60px #4d77ff, 0 0 70px #4d77ff, 0 0 80px #4d50ff;
+  }
+
+}
+
+@media screen and (max-width : 768px) {
+    .rubrique {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    
 }
