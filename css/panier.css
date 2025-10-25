@@ -4,6 +4,17 @@
     --texte-clair: #f1f1f1;
 }
 
+.navbar .logo {
+    display: none !important;
+}
+
+#menu-toggle,
+.menu-toggle,
+.menu-button,
+.menu-button img {
+    display: none !important;
+}
+
 section {
     margin: 20px;
     padding: 20px;
@@ -35,3 +46,4 @@ button {
     transition: transform 0.2s;
 
 }
+
