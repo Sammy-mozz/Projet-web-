@@ -1,50 +1,201 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon Panier - MaBoutique</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="panier.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script src="js/anim.js"></script>
 </head>
 
 <body>
+  <!-- <header>
+        <div class="navbar">
+            <a href="page_acceuil.html" class="logo-link">
+                <img class="logo" src="images/Brr-Brr-Patapim-Viral-TikTok-Meme-768x873-removebg-preview.png" alt="logo">
+            </a>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-button"><img src="images/Brr-Brr-Patapim-Viral-TikTok-Meme-768x873-removebg-preview.png" alt="logo-responsive"></label>
+            <ul class="nav-menu">
+                <li><a class="rubrique" href="page_acceuil.html">accueil</a></li>
+                <li><a class="rubrique" href="boutique.html">boutique</a></li>
+                <li><a class="rubrique" href="panier.html">panier</a></li>
+                <li><a class="rubrique" href="page_a_propos.html">à propos</a></li>
+            </ul>
+        </div>
+  </header> -->
+
   <main>
-    <section class="panier-container">
-      <h2>Votre panier</h2>
+    <section>
+      <div class="panier">
+      <h1>Votre panier</h1>
+
+      <!-- 1er Produit -->
       <div class="panier-item">
         <img src="images/produit1.jpg" alt="Produit 1" class="panier-image">
         <div class="panier-details">
-          <h3>Nom du produit 1</h3>
+          <h2>Nom du produit 1</h2>
           <p>Description rapide du produit.</p>
           <p>Prix unitaire : <strong>29,99 €</strong></p>
           <label for="quantite1">Quantité :</label>
           <input type="number" id="quantite1" name="quantite1" value="1" min="1">
           <p>Total : <strong>29,99 €</strong></p>
-          <button class="supprimer">Supprimer</button>
+          <button class="supprimer" title="Supprimer l’article">
+            <i class="fa-solid fa-trash"></i>
+          </button>
         </div>
       </div>
+
+      <!-- 2eme Produit -->
       <div class="panier-item">
         <img src="images/produit2.jpg" alt="Produit 2" class="panier-image">
         <div class="panier-details">
-          <h3>Nom du produit 2</h3>
+          <h2>Nom du produit 2</h2>
           <p>Description rapide du produit.</p>
           <p>Prix unitaire : <strong>49,99 €</strong></p>
           <label for="quantite2">Quantité :</label>
           <input type="number" id="quantite2" name="quantite2" value="2" min="1">
           <p>Total : <strong>99,98 €</strong></p>
-          <button class="supprimer">Supprimer</button>
+          <button class="supprimer" title="Supprimer l’article">
+            <i class="fa-solid fa-trash"></i>
+          </button>
         </div>
       </div>
+
+      <!-- 3eme Produit -->
+      <div class="panier-item">
+        <img src="images/produit3.jpg" alt="Produit 3" class="panier-image">
+        <div class="panier-details">
+          <h2>Nom du produit 3</h2>
+          <p>Description rapide du produit.</p>
+          <p>Prix unitaire : <strong>49,99 €</strong></p>
+          <label for="quantite3">Quantité :</label>
+          <input type="number" id="quantite2" name="quantite3" value="3" min="1">
+          <p>Total : <strong>99,98 €</strong></p>
+          <button class="supprimer" title="Supprimer l’article">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4eme Produit -->
+      <div class="panier-item">
+        <img src="images/produit4.jpg" alt="Produit 4" class="panier-image">
+        <div class="panier-details">
+          <h2>Nom du produit 2</h2>
+          <p>Description rapide du produit.</p>
+          <p>Prix unitaire : <strong>49,99 €</strong></p>
+          <label for="quantite4">Quantité :</label>
+          <input type="number" id="quantite2" name="quantite4" value="4" min="1">
+          <p>Total : <strong>99,98 €</strong></p>
+          <button class="supprimer" title="Supprimer l’article">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </div>
+
+      </div>
+    </section>
+
+    <!-- Total -->
+    <section>
       <div class="panier-resume">
-        <h3>Résumé de la commande</h3>
+        <h2>Résumé de la commande</h2>
         <p>Sous-total : <strong>129,97 €</strong></p>
         <p>Frais de livraison : <strong>5,00 €</strong></p>
         <hr>
         <p>Total à payer : <strong>134,97 €</strong></p>
-        <button class="commander">Procéder au paiement</button>
+        <button class="paiement">Procéder au paiement</button>
       </div>
     </section>
+
+    <!-- Suggestion -->
+    <section>
+      <div class="suggestions">
+
+        <!-- 1er Produit sugegstions -->
+        <h2>Vous pourriez le remplir avec :</h2>
+        <div class="suggestion-item">
+          <img src="images/produit1+.jpg" alt="Produit 1+" class="suggestion-image">
+          <h3>Nom du produit 1+</h3>
+          <p>Prix : <strong>39,99 €</strong></p>
+          <button class="ajouter">Ajouter au panier</button>
+        </div>
+
+        <!-- 2eme Produit sugegstions -->
+        <h2>Vous pourriez le remplir avec :</h2>
+        <div class="suggestion-item">
+          <img src="images/produit2+.jpg" alt="Produit 2+" class="suggestion-image">
+          <h3>Nom du produit 2+</h3>
+          <p>Prix : <strong>39,99 €</strong></p>
+          <button class="ajouter">Ajouter au panier</button>
+        </div>
+
+        <!-- 3eme Produit sugegstions -->
+        <h2>Vous pourriez le remplir avec :</h2>
+        <div class="suggestion-item">
+          <img src="images/produit3+.jpg" alt="Produit 3+" class="suggestion-image">
+          <h3>Nom du produit 3+</h3>
+          <p>Prix : <strong>39,99 €</strong></p>
+          <button class="ajouter">Ajouter au panier</button>
+        </div>
+
+        <!-- 4eme Produit sugegstions -->
+        <h2>Vous pourriez le remplir avec :</h2>
+        <div class="suggestion-item">
+          <img src="images/produit4+.jpg" alt="Produit 4+" class="suggestion-image">
+          <h3>Nom du produit 4+</h3>
+          <p>Prix : <strong>39,99 €</strong></p>
+          <button class="ajouter">Ajouter au panier</button>
+        </div>
+
+        <!-- 5eme Produit sugegstions -->
+        <h2>Vous pourriez le remplir avec :</h2>
+        <div class="suggestion-item">
+          <img src="images/produit5+.jpg" alt="Produit 5+" class="suggestion-image">
+          <h3>Nom du produit 5+</h3>
+          <p>Prix : <strong>39,99 €</strong></p>
+          <button class="ajouter">Ajouter au panier</button>
+        </div>
+
+        <!-- 6eme Produit sugegstions -->
+        <h2>Vous pourriez le remplir avec :</h2>
+        <div class="suggestion-item">
+          <img src="images/produit6+.jpg" alt="Produit 6+" class="suggestion-image">
+          <h3>Nom du produit 6+</h3>
+          <p>Prix : <strong>39,99 €</strong></p>
+          <button class="ajouter">Ajouter au panier</button>
+        </div>
+
+        <!-- 7eme Produit sugegstions -->
+        <h2>Vous pourriez le remplir avec :</h2>
+        <div class="suggestion-item">
+          <img src="images/produit7+.jpg" alt="Produit 7+" class="suggestion-image">
+          <h3>Nom du produit 7+</h3>
+          <p>Prix : <strong>39,99 €</strong></p>
+          <button class="ajouter">Ajouter au panier</button>
+        </div>
+
+        <!-- 8eme Produit sugegstions -->
+        <h2>Vous pourriez le remplir avec :</h2>
+        <div class="suggestion-item">
+          <img src="images/produit8+.jpg" alt="Produit 8+" class="suggestion-image">
+          <h3>Nom du produit 8+</h3>
+          <p>Prix : <strong>39,99 €</strong></p>
+          <button class="ajouter">Ajouter au panier</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        © 2025 Brainshop - Aucune cellule cérébrale n’a été maltraitée (enfin presque).
+    </footer>
+
   </main>
 </body>
 </html>
-
