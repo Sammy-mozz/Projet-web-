@@ -1,0 +1,44 @@
+*{
+    --fond-sombre: #0e0e0e;
+    --accent: #00ffc6;
+    --texte-clair: #f1f1f1;
+}
+
+body {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 10px;
+}
+
+.panier-item {
+    background-color: #000452;
+}
+
+.panier-resume {
+    background-color: #1eff00;
+}
+
+.suggestion-item {
+    background-color: #ff00f2;
+}
+
+.paiement {
+    background-color: #00ffff;
+    border-radius: 10px;
+}
+
+button:hover{
+    transform: scale(1.03);
+}
+button {
+    transition: transform 0.2s;
+}
