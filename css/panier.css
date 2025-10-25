@@ -4,6 +4,14 @@
     --texte-clair: #f1f1f1;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--fond-sombre);
+    color: var(--texte-clair);
+    margin: 0;
+    line-height: 1.6;
+}
+
 .navbar .logo {
     display: none !important;
 }
@@ -46,4 +54,5 @@ button {
     transition: transform 0.2s;
 
 }
+
 
