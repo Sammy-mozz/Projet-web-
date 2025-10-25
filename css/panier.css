@@ -12,17 +12,6 @@ body {
     line-height: 1.6;
 }
 
-.navbar .logo {
-    display: none !important;
-}
-
-#menu-toggle,
-.menu-toggle,
-.menu-button,
-.menu-button img {
-    display: none !important;
-}
-
 section {
     margin: 20px;
     padding: 20px;
@@ -54,5 +43,6 @@ button {
     transition: transform 0.2s;
 
 }
+
 
 
