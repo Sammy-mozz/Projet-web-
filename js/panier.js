@@ -1,7 +1,8 @@
+// ================================== Beaucoup d'aide de chatgpt ========================================//
+
 // =========================
 // 🎯 GESTION DU PANIER
 // =========================
-
 // Sélecteurs principaux
 const panierBody = document.querySelector('#panier-body');
 const sousTotalEl = document.querySelector('#sous-total');
@@ -142,3 +143,4 @@ fleche.addEventListener('click', () => {
   suggestionsGrid.classList.toggle('visible');
   fleche.classList.toggle('active');
 });
+
