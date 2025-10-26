@@ -1,74 +1,144 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const panierBody = document.getElementById("panier-body");
-  const sousTotalEl = document.getElementById("sous-total");
-  const totalEl = document.getElementById("total");
-  const livraisonEl = document.getElementById("livraison");
-  const suggestions = document.querySelectorAll(".ajouter");
-  const fleche = document.getElementById("toggle-suggestions");
-  const cachees = document.querySelectorAll(".cachée");
-  let suggestionsOuvertes = false;
+// =========================
+// 🎯 GESTION DU PANIER
+// =========================
 
-  // Actualisation des totaux //
-  function majTotaux() {
-    let sousTotal = 0;
-    document.querySelectorAll("#panier-body tr").forEach(row => {
-      const price = parseFloat(row.dataset.price);
-      const qty = parseInt(row.querySelector(".quantite").value);
-      const totalLigne = price * qty;
-      row.querySelector(".total-ligne").textContent = totalLigne.toFixed(2) + " €";
-      sousTotal += totalLigne;
-    });
-    sousTotalEl.textContent = sousTotal.toFixed(2) + " €";
-    const livraison = parseFloat(livraisonEl.textContent.replace("€", "")) || 0;
-    totalEl.textContent = (sousTotal + livraison).toFixed(2) + " €";
-  }
+// Sélecteurs principaux
+const panierBody = document.querySelector('#panier-body');
+const sousTotalEl = document.querySelector('#sous-total');
+const livraisonEl = document.querySelector('#livraison');
+const totalEl = document.querySelector('#total');
+const suggestionsGrid = document.querySelector('#suggestions-grid');
+const fraisLivraison = 5.00;
 
+// ----------------------------
+// 🧮 Fonction pour recalculer les totaux
+// ----------------------------
+function majTotaux() {
+  let sousTotal = 0;
+
+  document.querySelectorAll('#panier-body tr').forEach((ligne) => {
+    const prix = parseFloat(ligne.dataset.price);
+    const quantite = parseInt(ligne.querySelector('.quantite').value);
+    const totalLigne = prix * quantite;
+    ligne.querySelector('.total-ligne').textContent = totalLigne.toFixed(2) + ' €';
+    sousTotal += totalLigne;
+  });
+
+  sousTotalEl.textContent = sousTotal.toFixed(2) + ' €';
+  const total = sousTotal + fraisLivraison;
+  totalEl.textContent = total.toFixed(2) + ' €';
+}
+
+// ----------------------------
+// 🗑️ Fonction pour supprimer un article
+// ----------------------------
+function supprimerArticle(bouton) {
+  const ligne = bouton.closest('tr');
+  const nom = ligne.querySelector('td:nth-child(2)').textContent.trim();
+  const img = ligne.querySelector('img').getAttribute('src');
+  const prix = ligne.dataset.price;
+
+  // Supprimer du panier
+  ligne.remove();
   majTotaux();
 
-  // Changement de quantité //
-  panierBody.addEventListener("input", (e) => {
-    if (e.target.classList.contains("quantite")) majTotaux();
+  // 🔁 Réafficher l'article dans les suggestions
+  const suggestionExistante = Array.from(suggestionsGrid.children).find(item => {
+    return item.dataset.img === img;
   });
 
-  // Suppression d’un article //
-  panierBody.addEventListener("click", (e) => {
-    if (e.target.closest(".supprimer")) {
-      e.target.closest("tr").remove();
-      majTotaux();
-    }
-  });
+  if (suggestionExistante) {
+    suggestionExistante.classList.remove('cachée');
+  } else {
+    // Si l’article vient d’être ajouté manuellement, on le recrée
+    const nouvelItem = document.createElement('div');
+    nouvelItem.classList.add('suggestion-item');
+    nouvelItem.dataset.name = nom;
+    nouvelItem.dataset.price = prix;
+    nouvelItem.dataset.img = img;
 
-  // Ajout depuis suggestions //
-  suggestions.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const item = btn.parentElement;
-      const name = item.dataset.name;
-      const price = parseFloat(item.dataset.price);
-      const img = item.dataset.img;
+    nouvelItem.innerHTML = `
+      <img src="${img}" alt="${nom}">
+      <h3>${nom}</h3>
+      <p>Prix : <strong>${parseFloat(prix).toFixed(2)} €</strong></p>
+      <button class="ajouter">Ajouter au panier</button>
+    `;
+    suggestionsGrid.appendChild(nouvelItem);
+  }
+}
 
-      const newRow = document.createElement("tr");
-      newRow.dataset.price = price;
-      newRow.innerHTML = `
-        <td class="produit"><img src="${img}" alt="${name}" class="panier-image"></td>
-        <td>${name}</td>
-        <td class="prix">${price.toFixed(2)} €</td>
-        <td><input type="number" min="1" value="1" class="quantite"></td>
-        <td class="total-ligne">${price.toFixed(2)} €</td>
-        <td><button class="supprimer"><i class="fa-solid fa-trash"></i></button></td>
-      `;
-      panierBody.appendChild(newRow);
-      majTotaux();
-    });
-  });
+// ----------------------------
+// ➕ Fonction pour ajouter un article
+// ----------------------------
+function ajouterArticle(item) {
+  const nom = item.dataset.name;
+  const prix = parseFloat(item.dataset.price);
+  const img = item.dataset.img;
 
-  // Afficher / cacher les suggestions du bas //
-  fleche.addEventListener("click", () => {
-    suggestionsOuvertes = !suggestionsOuvertes;
-    cachees.forEach(el => {
-      el.style.display = suggestionsOuvertes ? "block" : "none";
-    });
-    fleche.innerHTML = suggestionsOuvertes
-      ? '<i class="fa-solid fa-chevron-up"></i>'
-      : '<i class="fa-solid fa-chevron-down"></i>';
-  });
+  // Vérifie si déjà dans le panier
+  const dejaDansPanier = Array.from(document.querySelectorAll('#panier-body tr')).some(
+    ligne => ligne.querySelector('img').getAttribute('src') === img
+  );
+
+  if (dejaDansPanier) return; // évite les doublons
+
+  // Créer la ligne du tableau
+  const nouvelleLigne = document.createElement('tr');
+  nouvelleLigne.dataset.price = prix;
+  nouvelleLigne.innerHTML = `
+    <td class="produit">
+      <img src="${img}" alt="${nom}" class="panier-image">
+    </td>
+    <td>${nom}</td>
+    <td class="prix">${prix.toFixed(2)} €</td>
+    <td><input type="number" min="1" max="10" value="1" class="quantite"></td>
+    <td class="total-ligne">${prix.toFixed(2)} €</td>
+    <td><button class="supprimer"><i class="fa-solid fa-trash"></i></button></td>
+  `;
+
+  panierBody.appendChild(nouvelleLigne);
+
+  // Cache la suggestion correspondante
+  item.classList.add('cachée');
+
+  majTotaux();
+}
+
+// ----------------------------
+// 📦 GESTION DES ÉVÉNEMENTS
+// ----------------------------
+
+// Quantité modifiée
+document.addEventListener('input', (e) => {
+  if (e.target.classList.contains('quantite')) {
+    majTotaux();
+  }
+});
+
+// Suppression d’un article
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.supprimer')) {
+    supprimerArticle(e.target.closest('.supprimer'));
+  }
+});
+
+// Ajout d’un article depuis les suggestions
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('ajouter')) {
+    ajouterArticle(e.target.closest('.suggestion-item'));
+  }
+});
+
+// ----------------------------
+// 🧮 Initialisation
+// ----------------------------
+majTotaux();
+
+// ----------------------------
+// 🔽 Flèche d’affichage des suggestions
+// ----------------------------
+const fleche = document.querySelector('#toggle-suggestions');
+fleche.addEventListener('click', () => {
+  suggestionsGrid.classList.toggle('visible');
+  fleche.classList.toggle('active');
 });
