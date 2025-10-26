@@ -1,0 +1,158 @@
+*{
+    --fond-sombre: #0e0e0e;
+    --accent: #00ffc6;
+    --texte-clair: #f1f1f1;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--texte-clair);
+    background-color: black;
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    text-align: left;
+    gap: 10px; 
+}
+
+.panier-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 255, 198, 0.4);
+}
+
+h2{
+  text-align: left;
+  margin: 0;
+  margin-left: 10px;
+}
+.panier-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+
+.panier-image:hover {
+    transform: scale(0.9);
+    transition: 0.2s;
+}
+
+input[type="number"] {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.prix-quantite{
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    align-items: center;
+}
+
+.panier-details{
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.panier-details .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-left: 10px;
+}
+
+.panier-details .description {
+    margin: 0;
+    font-size: 15px;
+    color: var(--texte-clair);
+}
+
+.panier-resume{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  color: var(--texte-clair);
+  background-color: var(--fond-sombre);
+  border : 2px solid var(--accent);
+  border-radius: 5px;
+  background-color: var(--fond-sombre);
+  max-height: 200px;
+  overflow: hidden;
+  gap: 20px;
+}
+
+.panier-item,
+.suggestion-item,
+.paiement,
+.supprimer,
+.ajouter {
+    color: var(--texte-clair);
+    background-color: var(--fond-sombre);
+    border : 2px solid var(--accent);
+    border-radius: 5px;
+    background-color: var(--fond-sombre);
+    display: flex;
+    margin-left: 100px;
+    max-width: 1000px;
+    max-height: 200px;
+    overflow: hidden;
+    gap: 20px;
+    align-items: center;
+}
+
+.panier-resume{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+button:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+.ajouter-animation {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.supprimer-animation {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+.supprimer:hover {
+  color: rgb(255, 0, 51);
+}

@@ -1,0 +1,146 @@
+:root {
+    --fond-sombre: #0e0e0e;
+    --accent: #00ffc6;
+    --texte-clair: #f1f1f1;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--fond-sombre);
+    color: var(--texte-clair);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ---------- SECTIONS ---------- */
+.introduction,
+.mission,
+.equipe {
+    padding: 2rem;
+    text-align: center;
+}
+
+/* ---------- ÉQUIPE ---------- */
+.equipe {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2rem;
+    justify-items: center;
+    padding: 2rem;
+}
+
+.membre-equipe {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--accent);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 198, 0.15);
+    transition: all 0.3s ease;
+}
+
+.membre-equipe:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(0, 255, 198, 0.3);
+}
+
+.membre-equipe img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    margin-bottom: 1rem;
+}
+
+.membre-equipe h3 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.membre-equipe p {
+    color: var(--texte-clair);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+    .equipe {
+        grid-template-columns: 1fr; 
+    }
+
+    .membre-equipe {
+        width: 90%;
+    }
+}
+
+/* ---------- MISSION ---------- */
+.mission h2 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.mission p {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ---------- BOUTON ---------- */
+.appel-action {
+    background: var(--accent);
+    color: #0e0e0e;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.appel-action:hover {
+    background: #00cda0;
+    transform: scale(1.05);
+}
+
+/* ---------- CARTES ET BANNIÈRE ---------- */
+.banniere,
+.carte {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--accent);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 255, 198, 0.2);
+    transition: all 0.3s ease;
+}
+
+.banniere:hover,
+.carte:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 255, 198, 0.4);
+}
+
+.conteneur-cartes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.carte {
+    flex: 1;
+    max-width: 800px;
+    text-align: left;
+}
+
+/* ---------- PIED DE PAGE ---------- */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #bbb;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
