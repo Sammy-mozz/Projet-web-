@@ -126,7 +126,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1440px) {
 
     .img_div1, .img_div2 {    
         flex-direction: column;           
