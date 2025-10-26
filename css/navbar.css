@@ -12,17 +12,17 @@ header {
 .navbar {
     position: sticky;
     top: 0;
-    background-color: rgba(0, 0, 0, 0);
     padding: 40px;
     display: flex;
     justify-content: center; 
     align-items: center;
-    transition: background-color ease-in-out 0.4s;
+    background-color: rgba(0, 0, 0); 
+    box-shadow: 0 2px 5px #00ffc6;
+    z-index: 1000;
    }
 
 .navbar.scrolled {
     position: sticky;
-    background-color: rgba(0, 0, 0, 1); 
     box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
 }
 
@@ -39,8 +39,6 @@ header {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-
-
 }
 
 .logo {
@@ -141,10 +139,6 @@ main > h1 {
     height: 100vh;
 }
 
-.navbar:hover{
-    background-color: #000000;
-}
-
 .titre-acceuil:hover {
     border: #fff;
 }
@@ -167,5 +161,48 @@ main > h1 {
         justify-content: center;
         align-items: center;
         padding: 20px;
+        position: relative;
+        gap: 50px;
     }   
+
+    .navbar{
+        position: relative;
+    }
+
+    header{
+        position: relative;
+    }
+
+    .navbar.scrolled{
+        position: relative;
+    }
+    .rubrique {
+        position: relative;
+        border-radius: 10px;
+        padding: 10px;
+        text-decoration: none;
+        overflow: hidden; 
+        z-index: 0;
+        color: #fff;
+        text-align: center;
+        animation: rubrique 1s ease-in-out infinite alternate;
+        font-size: 20px;
+    }
+
+    .rubrique::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        z-index: -1; 
+    }
+
+    .rubrique:hover::before {
+        width: 0%;
+    }
+
+    .rubrique:hover {
+        color: white;
+    }
 }
