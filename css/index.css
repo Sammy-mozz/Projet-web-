@@ -16,8 +16,8 @@ main > h1 {
     width: 100%;
     cursor: pointer;
     transition: opacity 0.4s ease-in-out;
-    box-shadow: 0 0 5px white;
-    background: #00ffc6;
+    box-shadow: 0 0 10px #00ffc6;
+    background: #666668;
 }
 
 .gallery-item > img {
@@ -25,13 +25,9 @@ main > h1 {
     width: 300px;
 }
 
-.gallery-item:hover {
-    transform: translateY(-5px);
-    opacity: 1;
-}
 
 .gallery {
-    opacity: 0.8;
+    opacity: 1;
 }
 
 
@@ -71,7 +67,7 @@ main > h1 {
   transition: ease-in-out 0.4s;
   cursor: pointer;
   animation: titre-acceuil 1s ease-in-out infinite alternate;
-  transition: color 0.3s ease;
+  transition: all 0.2 ease;
 }
 
 .espace {
@@ -83,6 +79,7 @@ main > h1 {
 .titre-acceuil:hover {
     border: #fff;
     opacity: 1;
+    transform: scale(1.05);
 }
 
 .presentation-hype {
@@ -97,10 +94,39 @@ main > h1 {
 .presentation-hype > h1 {
     color: #00ffc6;
     text-align: center;
+
 }
 
 .item-toggle{
     display: none;
+}
+
+.item-content {
+    color: #fff;
+}
+
+.btn{
+    width: 30%;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    border: solid 2px #00ffc6;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.2 ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #bbb;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @-webkit-keyframes titre-acceuil {
@@ -112,4 +138,11 @@ main > h1 {
     text-shadow: 0 0 20px #fff, 0 0 30px #e2e6e7, 0 0 40px #a8a9aa, 0 0 50px #808183, 0 0 60px #6c6d6e, 0 0 70px #676869, 0 0 80px #666668;
   }
 
+}
+
+@media screen and (max-width : 768px) {
+    .gallery-content{
+        display: flex;
+        flex-direction: column;
+    }
 }
