@@ -1,4 +1,4 @@
-// ================================== Beaucoup d'aide de chatgpt ========================================//
+// ================================== Beaucoup d'aide de chatgpt et ytb ========================================//
 
 // =========================
 // 🎯 GESTION DU PANIER
@@ -152,5 +152,6 @@ toggleBtn.addEventListener('click', () => {
   const hiddenItems = suggestionsGrid.querySelectorAll('.cachée');
   hiddenItems.forEach(item => item.classList.remove('cachée')); // on les affiche
 });
+
 
 
