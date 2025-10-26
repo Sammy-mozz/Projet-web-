@@ -144,3 +144,16 @@ fleche.addEventListener('click', () => {
   fleche.classList.toggle('active');
 });
 
+  // --- Afficher / cacher les suggestions du bas ---
+  fleche.addEventListener("click", () => {
+    suggestionsOuvertes = !suggestionsOuvertes;
+    cachees.forEach(el => {
+      el.style.display = suggestionsOuvertes ? "block" : "none";
+    });
+    fleche.innerHTML = suggestionsOuvertes
+      ? '<i class="fa-solid fa-chevron-up"></i>'
+      : '<i class="fa-solid fa-chevron-down"></i>';
+  });
+});
+
+
