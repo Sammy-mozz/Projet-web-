@@ -145,15 +145,12 @@ fleche.addEventListener('click', () => {
 });
 
   // --- Afficher / cacher les suggestions du bas ---
-  fleche.addEventListener("click", () => {
-    suggestionsOuvertes = !suggestionsOuvertes;
-    cachees.forEach(el => {
-      el.style.display = suggestionsOuvertes ? "block" : "none";
-    });
-    fleche.innerHTML = suggestionsOuvertes
-      ? '<i class="fa-solid fa-chevron-up"></i>'
-      : '<i class="fa-solid fa-chevron-down"></i>';
-  });
+const toggleBtn = document.getElementById('toggle-suggestions');
+const suggestionsGrid = document.getElementById('suggestions-grid');
+
+toggleBtn.addEventListener('click', () => {
+  const hiddenItems = suggestionsGrid.querySelectorAll('.cachée');
+  hiddenItems.forEach(item => item.classList.remove('cachée')); // on les affiche
 });
 
 
