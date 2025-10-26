@@ -1,10 +1,10 @@
 # Projet-web-
 
-  - La page d'accueil a été réalisée par [NOM Sammy](mailto:robin.peigney@edu.univ-fcomte.fr)
+  - La page d'accueil a été réalisée par [TAQI Sammy](mailto:sammy.taqi@edu.univ-fcomte.fr)
   - La page de boutique a été réalisée par [Pernot Dylan](mailto:dylan.pernot02@edu.univ-fcomte.fr)
   - Le panier a été réalisé par [MARTIN--GRENTZINGER Louis](mailto:louis.martin--grentzinger@edu.univ-fcomte.fr)
   - La page à propos a été réalisée par [PEIGNEY Robin](mailto:robin.peigney@edu.univ-fcomte.fr)
 
-Nom2 et Nom3 ont travaillé ensemble sur le header/footer
+Dylan PERNOT et Sammy TAQI ont travaillé ensemble sur le header/footer
 
 Lien du site (hébergé sur github) : https://sammy-mozz.github.io/Projet-web-/
