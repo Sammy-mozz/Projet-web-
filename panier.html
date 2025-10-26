@@ -11,17 +11,18 @@
 </head>
 
 <body>
+
   <!-- Navbar -->
   <header>
     <div class="navbar">
-      <a href="index.html" class="logo-link">
+      <a href="page_acceuil.html" class="logo-link">
         <img class="logo" src="images/Brr-Brr-Patapim-Viral-TikTok-Meme-768x873-removebg-preview.png" alt="logo">
       </a>
       <ul class="nav-menu">
-        <li><a class="rubrique" href="index.html">Accueil</a></li>
-        <li><a class="rubrique" href="boutique.html">Boutique</a></li>
-        <li><a class="rubrique" href="panier.html">Panier</a></li>
-        <li><a class="rubrique" href="page_a_propos.html">À propos</a></li>
+        <li><a class="rubrique" href="page_acceuil.html">accueil</a></li>
+        <li><a class="rubrique" href="boutique.html">boutique</a></li>
+        <li><a class="rubrique" href="panier.html">panier</a></li>
+        <li><a class="rubrique" href="page_a_propos.html">à propos</a></li>
       </ul>
     </div>
   </header>
@@ -45,37 +46,39 @@
                 <th>Supprimer</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
+            <tbody id="panier-body">
+              <tr data-price="18.99">
                 <td class="produit">
-                  <img src="images/boutique/adindindindin.jpg" alt="Udin" class="panier-image">
+                  <img src="images/boutique/adindindindin.jpg" alt="Udin Din Din Din Dun" class="panier-image">
                 </td>
                 <td>Peluche artisanale douce et originale</td>
-                <td>18,99 €</td>
-                <td>1</td>
-                <td>18,99 €</td>
+                <td class="prix">18,99 €</td>
+                <td><input type="number" min="1" max="10" value="1" class="quantite"></td>
+                <td class="total-ligne">18,99 €</td>
                 <td><button class="supprimer"><i class="fa-solid fa-trash"></i></button></td>
               </tr>
-              <tr>
+            </tbody>
+            <tbody id="panier-body">
+              <tr data-price="18.99">
                 <td class="produit">
-                  <img src="images/produit2.jpg" alt="Produit 2" class="panier-image">
-                  <span>Nom du produit 2</span>
+                  <img src="images/boutique/tatatasahur.jpg" alt="Tatata Sahur" class="panier-image">
                 </td>
-                <td>Description rapide du produit</td>
-                <td>18,99 €</td>
-                <td>2</td>
-                <td>37,98 €</td>
+                <td>Laissez-vous séduire par la peluche Tatata Sahur</td>
+                <td class="prix">18,99 €</td>
+                <td><input type="number" min="1" max="10" value="1" class="quantite"></td>
+                <td class="total-ligne">18,99 €</td>
                 <td><button class="supprimer"><i class="fa-solid fa-trash"></i></button></td>
               </tr>
-              <tr>
+            </tbody>
+            <tbody id="panier-body">
+              <tr data-price="18.99">
                 <td class="produit">
-                  <img src="images/produit3.jpg" alt="Produit 3" class="panier-image">
-                  <span>Nom du produit 3</span>
+                  <img src="images/boutique/tarlalerotralalala.jpg" alt="Tarlalero Tralala" class="panier-image">
                 </td>
-                <td>Description rapide du produit</td>
-                <td>18,99 €</td>
-                <td>3</td>
-                <td>56,97 €</td>
+                <td>Découvrez la peluche Tarlalero Tralala</td>
+                <td class="prix">18,99 €</td>
+                <td><input type="number" min="1" max="10" value="1" class="quantite"></td>
+                <td class="total-ligne">18,99 €</td>
                 <td><button class="supprimer"><i class="fa-solid fa-trash"></i></button></td>
               </tr>
             </tbody>
@@ -85,10 +88,10 @@
         <!-- Résumé commande -->
         <aside class="panier-resume">
           <h2>Résumé de la commande</h2>
-          <p>Sous-total : <strong>113,94 €</strong></p>
-          <p>Frais de livraison : <strong>5,00 €</strong></p>
+          <p>Sous-total : <strong id="sous-total">0,00 €</strong></p>
+          <p>Frais de livraison : <strong id="livraison">5,00 €</strong></p>
           <hr>
-          <p>Total à payer : <strong>118,94 €</strong></p>
+          <p>Total à payer : <strong id="total">5,00 €</strong></p>
           <button class="paiement">Procéder au paiement</button>
         </aside>
       </div>
@@ -97,46 +100,52 @@
     <!-- Suggestions -->
     <section class="suggestions">
       <h1>Vous pourriez le remplir avec :</h1>
-      <div class="suggestions-grid">
-        <div class="suggestion-item">
-          <img src="images/produit1+.jpg" alt="Produit 1+">
-          <h3>Nom du produit 1+</h3>
+
+      <div class="suggestions-grid" id="suggestions-grid">
+        <div class="suggestion-item" data-name="Chimpanzini Bananini" data-price="18.99" data-img="images/boutique/bananini.jpg">
+          <img src="images/boutique/bananini.jpg" alt="Chimpanzini Bananini">
+          <h3>Chimpanzini Bananini</h3>
           <p>Prix : <strong>18,99 €</strong></p>
           <button class="ajouter">Ajouter au panier</button>
         </div>
-        <div class="suggestion-item">
-          <img src="images/produit2+.jpg" alt="Produit 2+">
-          <h3>Nom du produit 2+</h3>
+
+        <div class="suggestion-item" data-name="Assasino Cappuchino" data-price="18.99" data-img="images/boutique/assasinocappuchino.jpg">
+          <img src="images/boutique/assasinocappuchino.jpg" alt="Assasino Cappuchino">
+          <h3>Assasino Cappuchino</h3>
           <p>Prix : <strong>18,99 €</strong></p>
           <button class="ajouter">Ajouter au panier</button>
         </div>
-        <div class="suggestion-item">
-          <img src="images/produit3+.jpg" alt="Produit 3+">
-          <h3>Nom du produit 3+</h3>
+
+        <div class="suggestion-item" data-name="Brr Brr Patapim" data-price="18.99" data-img="images/boutique/brr_brr_patapim.jpg">
+          <img src="images/boutique/brr_brr_patapim.jpg" alt="Brr Brr Patapim">
+          <h3>Brr Brr Patapim</h3>
           <p>Prix : <strong>18,99 €</strong></p>
           <button class="ajouter">Ajouter au panier</button>
         </div>
-        <div class="suggestion-item">
-          <img src="images/produit4+.jpg" alt="Produit 4+">
-          <h3>Nom du produit 4+</h3>
+
+        <div class="suggestion-item cachée" data-name="Larili Larila" data-price="18.99" data-img="images/boutique/larililarila_peluche.jpg">
+          <img src="images/boutique/larililarila_peluche.jpg" alt="Larili Larila">
+          <h3>Larili Larila</h3>
           <p>Prix : <strong>18,99 €</strong></p>
           <button class="ajouter">Ajouter au panier</button>
         </div>
-        <div class="suggestion-item">
-          <img src="images/produit5+.jpg" alt="Produit 5+">
-          <h3>Nom du produit 5+</h3>
+
+        <div class="suggestion-item cachée" data-name="Balerina Cappuchina" data-price="18.99" data-img="images/boutique/balerinacappuchina.jpg">
+          <img src="images/boutique/balerinacappuchina.jpg" alt="Balerina Cappuchina">
+          <h3>Balerina Cappuchina</h3>
           <p>Prix : <strong>18,99 €</strong></p>
           <button class="ajouter">Ajouter au panier</button>
         </div>
       </div>
+
+      <button id="toggle-suggestions" class="fleche"><i class="fa-solid fa-chevron-down"></i></button>
     </section>
 
     <footer>
       © 2025 Brainshop - Aucune cellule cérébrale n’a été maltraitée (enfin presque).
     </footer>
   </main>
-  <script src="js/anim.js"></script>
+
+  <script src="js/panier.js"></script>
 </body>
 </html>
-
-
