@@ -1,0 +1,115 @@
+main > h1 {
+    text-align: center;
+    color:  #000452;
+}
+
+.gallery-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 60px;
+    
+}
+
+.gallery-item {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
+    box-shadow: 0 0 5px white;
+    background: #00ffc6;
+}
+
+.gallery-item > img {
+    height: 200px;
+    width: 300px;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+}
+
+.gallery {
+    opacity: 0.8;
+}
+
+
+
+.background-gif {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    overflow: hidden;
+}
+
+.background-gif img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  height: 80vh;          
+}
+
+.titre-acceuil {
+  display: inline-block;             
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);  
+  background-color: #000;
+  color: #fff;
+  border-radius: 15px;
+  opacity: 1;
+  padding: 1rem 2rem;
+  transition: ease-in-out 0.4s;
+  cursor: pointer;
+  animation: titre-acceuil 1s ease-in-out infinite alternate;
+  transition: color 0.3s ease;
+}
+
+.espace {
+    height: 10vh;
+}
+
+
+
+.titre-acceuil:hover {
+    border: #fff;
+    opacity: 1;
+}
+
+.presentation-hype {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;     
+  text-align: center;      
+}
+
+
+.presentation-hype > h1 {
+    color: #00ffc6;
+    text-align: center;
+}
+
+.item-toggle{
+    display: none;
+}
+
+@-webkit-keyframes titre-acceuil {
+    from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #d6e0dc, 0 0 40px #e0e9e4, 0 0 50px #c3ccc7, 0 0 60px #d8dfd9, 0 0 70px #e0e0e0;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #e2e6e7, 0 0 40px #a8a9aa, 0 0 50px #808183, 0 0 60px #6c6d6e, 0 0 70px #676869, 0 0 80px #666668;
+  }
+
+}

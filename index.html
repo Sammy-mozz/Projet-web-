@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceuil</title>
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <header>
@@ -12,6 +13,8 @@
             <a href="page_acceuil.html" class="logo-link">
                 <img class="logo" src="images/Brr-Brr-Patapim-Viral-TikTok-Meme-768x873-removebg-preview.png" alt="logo">
             </a>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-button"><img src="images/Brr-Brr-Patapim-Viral-TikTok-Meme-768x873-removebg-preview.png" alt="logo-responsive"></label>
             <ul class="nav-menu">
                 <li><a class="rubrique" href="page_acceuil.html">accueil</a></li>
                 <li><a class="rubrique" href="boutique.html">boutique</a></li>
@@ -24,14 +27,31 @@
     <div class="background-gif">
         <img src="images/background.gif" alt="background">
     </div>
-    <div class="titre-acceuil">
-    <h1>BrainShop</h1>
+    <div class="container" >
+    <h1 class="titre-acceuil">BrainShop</h1>
     </div>
 
     <div class="espace"></div>
-
-
     
+    <div class="presentation-hype">
+        <h1> Nos produits en éditions limités</h1>
+        <div class="gallery">
+            <div class="gallery-content">
+                <input type="checkbox" id="showcase-toggle" class="item-toggle">
+                <label for="item-toggle" class="item-button">
+                    <div class="gallery-item">
+                        <img src="images/tung_tung_showcase.png" alt="tung">
+                        <div class="item-content">
+                            <h2> 25.99$</h2>
+                            <p>Plus de 2 millions de vente</p>
+                        </div>
+                    </div>
+                </label>
+                <div class="gallery-item"><img src="images/trala showcase.jpg" alt="trala"></div>
+                <div class="gallery-item"><img src="images/larili showcase.jpg" alt="larili"></div>
+            </div>
+        </div>
+    </div>
 
 
 </div>
