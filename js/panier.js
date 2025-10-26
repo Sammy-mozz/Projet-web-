@@ -1,113 +1,74 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const panierBody = document.getElementById("panier-body");
+  const sousTotalEl = document.getElementById("sous-total");
+  const totalEl = document.getElementById("total");
+  const livraisonEl = document.getElementById("livraison");
+  const suggestions = document.querySelectorAll(".ajouter");
+  const fleche = document.getElementById("toggle-suggestions");
+  const cachees = document.querySelectorAll(".cachée");
+  let suggestionsOuvertes = false;
 
-  const panier = document.querySelector(".panier");
-  const suggestionsContainer = document.querySelector(".suggestions");
-  const resumeSousTotal = document.querySelector(".panier-resume p strong");
-  const resumeTotal = document.querySelector(".panier-resume p:last-of-type strong");
-  const fraisLivraison = 5.00;
-
-  // 🔄 Met à jour les totaux du panier
-  function majTotal() {
-    let total = 0;
-    const items = document.querySelectorAll(".panier-item");
-
-    items.forEach(item => {
-      const prixUnitaire = parseFloat(item.dataset.price);
-      const quantite = parseInt(item.querySelector("input[type='number']").value);
-      const totalProduit = prixUnitaire * quantite;
-      item.querySelector(".total-produit").textContent = totalProduit.toFixed(2) + " €";
-      total += totalProduit;
+  // Actualisation des totaux //
+  function majTotaux() {
+    let sousTotal = 0;
+    document.querySelectorAll("#panier-body tr").forEach(row => {
+      const price = parseFloat(row.dataset.price);
+      const qty = parseInt(row.querySelector(".quantite").value);
+      const totalLigne = price * qty;
+      row.querySelector(".total-ligne").textContent = totalLigne.toFixed(2) + " €";
+      sousTotal += totalLigne;
     });
-
-    resumeSousTotal.textContent = total.toFixed(2) + " €";
-    resumeTotal.textContent = (total + fraisLivraison).toFixed(2) + " €";
+    sousTotalEl.textContent = sousTotal.toFixed(2) + " €";
+    const livraison = parseFloat(livraisonEl.textContent.replace("€", "")) || 0;
+    totalEl.textContent = (sousTotal + livraison).toFixed(2) + " €";
   }
 
-  // 🗑️ Supprimer un article (avec animation + retour dans les suggestions)
-  function supprimerArticle(e) {
-    const item = e.target.closest(".panier-item");
-    if (!item) return;
+  majTotaux();
 
-    const nomProduit = item.querySelector("h2").textContent;
-    const imageSrc = item.querySelector("img").src;
-    const prix = parseFloat(item.dataset.price);
+  // Changement de quantité //
+  panierBody.addEventListener("input", (e) => {
+    if (e.target.classList.contains("quantite")) majTotaux();
+  });
 
-    // Animation de suppression
-    item.classList.add("supprimer-animation");
-    setTimeout(() => {
-      item.remove();
-      majTotal();
+  // Suppression d’un article //
+  panierBody.addEventListener("click", (e) => {
+    if (e.target.closest(".supprimer")) {
+      e.target.closest("tr").remove();
+      majTotaux();
+    }
+  });
 
-      // 🔙 Recréer le produit dans les suggestions
-      const nouvelleSuggestion = document.createElement("div");
-      nouvelleSuggestion.classList.add("suggestion-item");
-      nouvelleSuggestion.dataset.price = prix;
-      nouvelleSuggestion.innerHTML = `
-        <img src="${imageSrc}" alt="${nomProduit}" class="suggestion-image">
-        <h3>${nomProduit}</h3>
-        <p>Prix : <strong>${prix.toFixed(2)} €</strong></p>
-        <button class="ajouter">Ajouter au panier</button>
+  // Ajout depuis suggestions //
+  suggestions.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.parentElement;
+      const name = item.dataset.name;
+      const price = parseFloat(item.dataset.price);
+      const img = item.dataset.img;
+
+      const newRow = document.createElement("tr");
+      newRow.dataset.price = price;
+      newRow.innerHTML = `
+        <td class="produit"><img src="${img}" alt="${name}" class="panier-image"></td>
+        <td>${name}</td>
+        <td class="prix">${price.toFixed(2)} €</td>
+        <td><input type="number" min="1" value="1" class="quantite"></td>
+        <td class="total-ligne">${price.toFixed(2)} €</td>
+        <td><button class="supprimer"><i class="fa-solid fa-trash"></i></button></td>
       `;
-
-      suggestionsContainer.appendChild(nouvelleSuggestion);
-      // Réactiver le bouton
-      nouvelleSuggestion.querySelector(".ajouter").addEventListener("click", ajouterAuPanier);
-
-    }, 400);
-  }
-
-  // ➕ Ajouter un article depuis les suggestions
-  function ajouterAuPanier(e) {
-    const suggestion = e.target.closest(".suggestion-item");
-    if (!suggestion) return;
-
-    const nomProduit = suggestion.querySelector("h3").textContent;
-    const imageSrc = suggestion.querySelector("img").src;
-    const prix = parseFloat(suggestion.dataset.price);
-
-    const nouveauProduit = document.createElement("div");
-    nouveauProduit.classList.add("panier-item", "ajouter-animation");
-    nouveauProduit.dataset.price = prix;
-
-    nouveauProduit.innerHTML = `
-      <img src="${imageSrc}" alt="${nomProduit}" class="panier-image">
-      <div class="panier-details">
-        <h2>${nomProduit}</h2>
-        <p>Description rapide du produit ajouté.</p>
-        <p>Prix unitaire : <strong>${prix.toFixed(2)} €</strong></p>
-        <label>Quantité :</label>
-        <input type="number" value="1" min="1">
-        <p>Total : <strong class="total-produit">${prix.toFixed(2)} €</strong></p>
-        <button class="supprimer" title="Supprimer l’article">
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      </div>
-    `;
-
-    panier.appendChild(nouveauProduit);
-
-    // Active les événements du nouveau produit
-    nouveauProduit.querySelector(".supprimer").addEventListener("click", supprimerArticle);
-    nouveauProduit.querySelector("input").addEventListener("input", majTotal);
-
-    // 🧨 Supprime le produit de la liste des suggestions
-    suggestion.remove();
-
-    majTotal();
-  }
-
-  // Activation initiale des événements
-  document.querySelectorAll(".supprimer").forEach(btn => {
-    btn.addEventListener("click", supprimerArticle);
+      panierBody.appendChild(newRow);
+      majTotaux();
+    });
   });
 
-  document.querySelectorAll(".panier-item input[type='number']").forEach(input => {
-    input.addEventListener("input", majTotal);
+  // Afficher / cacher les suggestions du bas //
+  fleche.addEventListener("click", () => {
+    suggestionsOuvertes = !suggestionsOuvertes;
+    cachees.forEach(el => {
+      el.style.display = suggestionsOuvertes ? "block" : "none";
+    });
+    fleche.innerHTML = suggestionsOuvertes
+      ? '<i class="fa-solid fa-chevron-up"></i>'
+      : '<i class="fa-solid fa-chevron-down"></i>';
   });
-
-  document.querySelectorAll(".ajouter").forEach(btn => {
-    btn.addEventListener("click", ajouterAuPanier);
-  });
-
-  majTotal();
 });
