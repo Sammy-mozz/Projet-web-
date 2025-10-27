@@ -32,7 +32,7 @@ table {
   grid-column: 2;
   align-self: start;
   width: 100%;
-  max-width: 1700px;
+  max-width: 900px;
   min-width: 0;
 }
 
@@ -97,7 +97,7 @@ button.supprimer:hover {
 
 /*  RÉSUMÉ COMMANDE */
 .panier-resume {
-  width: 200%;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.05);
   color: var(--texte-clair);
   border-radius: 12px;
@@ -108,7 +108,7 @@ button.supprimer:hover {
   grid-column: 2;
   align-self: start;
   margin: 0;
-  margin-left: 400px;
+  margin-left: 100px;
 }
 
 .panier-resume h2 {
@@ -378,3 +378,4 @@ footer {
     font-size: 1.4rem;
   }
 }
+
