@@ -232,7 +232,7 @@ button.supprimer:hover {
   transform: scale(1.2);
 }
 
-/* ---------- FOOTER ---------- */
+/*  FOOTER  */
 footer {
   text-align: center;
   padding: 20px;
@@ -241,82 +241,7 @@ footer {
   color: var(--texte-clair);
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* RESPONSIVE  */
 
-/* TABLETTE */
-@media (max-width: 1024px) {
-  .panier-container {
-    grid-template-columns: 1fr; /* Tableau + résumé empilés */
-    gap: 20px;
-    padding: 0 20px;
-  }
 
-  .table-panier {
-    font-size: 15px;
-    width: 100%;
-  }
-
-  th, td {
-    padding: 8px 15px;
-  }
-
-  .panier-resume {
-    max-width: 95%;
-    margin: 20px auto 0;
-    text-align: center;
-    padding: 15px;
-  }
-
-  .suggestions-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
-  h1 {
-    font-size: 24px;
-    margin-left: 0;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 700px) {
-  .panier-container {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 0 15px;
-  }
-
-  .table-panier {
-    display: block;
-    overflow-x: auto; /* scroll horizontal */
-    font-size: 14px;
-    width: 100%;
-  }
-
-  th, td {
-    padding: 6px 10px;
-  }
-
-  .panier-resume {
-    max-width: 95%;
-    margin: 10px auto;
-    padding: 12px;
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .suggestions-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .suggestion-item img {
-    width: 70px;
-    height: 70px;
-  }
-
-  h1 {
-    font-size: 21px;
-  }
-}
 
