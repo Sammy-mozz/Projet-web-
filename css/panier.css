@@ -32,7 +32,7 @@ table {
   grid-column: 2;
   align-self: start;
   width: 100%;
-  max-width: 750px;
+  max-width: 500px;
   min-width: 0;
 }
 
@@ -318,6 +318,7 @@ footer {
     font-size: 21px;
   }
 }
+
 
 
 
