@@ -31,7 +31,7 @@ table {
   margin-left: 200px;
   grid-column: 2;
   align-self: start;
-  width: 100%;
+  width: 50%;
   min-width: 0;
 }
 
@@ -317,6 +317,7 @@ footer {
     font-size: 21px;
   }
 }
+
 
 
 
